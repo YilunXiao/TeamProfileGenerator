@@ -8,18 +8,61 @@ const Manager = require('./lib/Manager');
 
 // VARIABLES
 const questions = [
-    // Pass your questions in here
-    {
-        type: 'input',
-        name: 'reason',
-        message: 'Why?',
-    },
-    {
-        type: 'input',
-        name: 'location',
-        message: 'Where?',
-    },
-  ];
+  // General employee questions
+  {
+    type: 'input',
+    name: 'name',
+    message: 'What is your full name?',
+  },
+  {
+    type: 'input',
+    name: 'id',
+    message: 'What is your ID number?',
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'What is your email?',
+  },
+];
+// Position specific questions
+const managerQuestion = [
+  {
+    type: 'input',
+    name: 'officeNumber',
+    message: 'What is your office number?',
+  },
+]
+const engineerQuestion = [
+  {
+    type: 'input',
+    name: 'gitHub',
+    message: 'What is your Github profile?',
+  },
+]
+const internQuestion = [
+  {
+    type: 'input',
+    name: 'school',
+    message: 'Which school did you most recently finish?',
+  },
+]
+// Loop questions
+const loopQuestions = [
+  {
+    type: 'confirm',
+    name: 'addEmpoyee',
+    message: 'Do you want to add another employee?',
+  },
+  {
+    type: 'checkbox',
+    name: 'employeeRole',
+    message: 'Which role is this employee part of?',
+    choices: ['Engineer', 'Intern'],
+  },
+]
+
+
 
 /*
 // Inquire prompt
@@ -39,14 +82,60 @@ inquirer
 */
 
 async function ask() {
-    // Get which roles are included
-    const answers = await inquirer.prompt(questions);
-    console.log(answers);
+  // Question answers
+  let managers = [];
+  let engineers = [];
+  let interns = [];
 
-    // Get info regarding those specific roles
+  // First get MANAGER's information
+  try {
+    const managerAns = await inquirer.prompt(questions.concat(managerQuestion));
+    managers.push(managerAns)
+  } catch(error) {
+    console.error(error);
+  }
 
+  // Check if user wants to add employee
+  try {
+    var loop = await inquirer.prompt(loopQuestions);
+  } catch(error) {
+    console.error(error);
+  }
+  // // Get Engineer info
+  // try {
+  //   const engineerAns = await inquirer.prompt(questions.concat(engineerQuestion));
+  //   engineers.push(engineerAns)
+  // } catch(error) {
+  //   console.error(error);
+  // }
+  
+  // // Check if user wants to add employee
+  // try {
+  //   const loop = await inquirer.prompt(loopQuestions);
+  // } catch(error) {
+  //   console.error(error);
+  // }
+  // // Get Intern info
+  // try {
+  //   const internAns = await inquirer.prompt(questions.concat(internQuestion));
+  //   interns.push(internAns)
+  // } catch(error) {
+  //   console.error(error);
+  // }
+  
 
-    // Create HTML page of team
+  // Log out info
+  console.log('Managers: ');
+  console.log(`Name: ${managers[0].name}, ID: ${managers[0].id}, Email: ${managers[0].email}, Office Number: ${managers[0].officeNumber}`);
+  console.log(loop);
+
+  // console.log('Engineers: ');
+  // console.log(`Name: ${engineers[0].name}, ID: ${engineers[0].id}, Email: ${engineers[0].email}, Office Number: ${engineers[0].officeNumber}`);
+
+  // console.log('Interns: ');
+  // console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, Office Number: ${interns[0].officeNumber}`);
+
+  // Create HTML page of team when application exits
 }
 
 ask();

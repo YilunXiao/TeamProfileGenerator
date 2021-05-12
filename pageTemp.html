@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Team</title>
 </head>
 <body>
-    <!-- Image and text -->
+    <!-- Navbar -->
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand mx-auto" href="#">
-        <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Team
+        <h1>Team</h1>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,50 +35,54 @@
         </div>
     </nav>
 
+    <!-- Carousel -->
     <main class="p-4">
     <div id="carouselIndicators" class="carousel slide border rounded" data-ride="carousel" data-interval="false">
         <ol class="carousel-indicators">
-          <button data-target="#carouselIndicators" data-slide-to="0" class="m-1 rounded active">First</button>
-          <button data-target="#carouselIndicators" data-slide-to="1" class="m-1 rounded">Second</button>
-          <button data-target="#carouselIndicators" data-slide-to="2" class="m-1 rounded">Third</button>
+          <button data-target="#carouselIndicators" data-slide-to="0" class="m-1 rounded active">Managers</button>
+          <button data-target="#carouselIndicators" data-slide-to="1" class="m-1 rounded">Engineers</button>
+          <button data-target="#carouselIndicators" data-slide-to="2" class="m-1 rounded">Interns</button>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="card">
+          <div class="carousel-item active p-5">
+              <div class="card mb-5 w-25">
                 <div class="card-header">
-                  First
+                  <h5>Jack Black</h5>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <p class="card-text">ID: 12345</p>
+                  <p class="card-text">Role: Manager</p>
+                  <p class="card-text">Office Number: 404</p>
+                  <p class="card-text">Email: fakemail@gmail.com</p>
                 </div>
               </div>
           </div>
-          <div class="carousel-item">
-            <div class="card">
-                <div class="card-header">
-                  Second
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+          <div class="carousel-item p-5">
+            <div class="card mb-5 w-25">
+              <div class="card-header">
+                <h5>Yilun Xiao</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text">ID: 12345</p>
+                <p class="card-text">Role: Engineer</p>
+                <p class="card-text">Github: YilunXiao</p>
+                <p class="card-text">Email: yilunxiao2@gmail.com</p>
               </div>
           </div>
-          <div class="carousel-item">
-            <div class="card">
-                <div class="card-header">
-                  Third
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+        </div>
+        <div class="carousel-item p-5">
+          <div class="card mb-5 w-25">
+            <div class="card-header">
+              <h5>Dwane Johnson</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">ID: 12345</p>
+              <p class="card-text">Role: Intern</p>
+              <p class="card-text">School: Wrestle University</p>
+              <p class="card-text">Email: fakemail@gmail.com</p>
+            </div>
           </div>
+        </div>
         </div>
         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
