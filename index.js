@@ -129,10 +129,10 @@ async function ask() {
   console.log(`Name: ${managers[0].name}, ID: ${managers[0].id}, Email: ${managers[0].email}, Office Number: ${managers[0].officeNumber}`);
 
   console.log('\nEngineers: ');
-  console.log(`Name: ${engineers[0].name}, ID: ${engineers[0].id}, Email: ${engineers[0].email}, Office Number: ${engineers[0].officeNumber}`);
+  console.log(`Name: ${engineers[0].name}, ID: ${engineers[0].id}, Email: ${engineers[0].email}, Github: ${engineers[0].gitHub}`);
 
   console.log('\nInterns: ');
-  console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, Office Number: ${interns[0].officeNumber}`);
+  console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, School: ${interns[0].school}`);
 
   // Create HTML page of team when application exits
 }
