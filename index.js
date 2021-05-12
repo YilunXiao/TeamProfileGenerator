@@ -49,12 +49,14 @@ const internQuestion = [
   },
 ]
 // Loop questions
-const loopQuestions = [
+const loopQ = [
   {
     type: 'confirm',
-    name: 'addEmpoyee',
+    name: 'addEmployee',
     message: 'Do you want to add another employee?',
-  },
+  }
+]
+const roleQ = [
   {
     type: 'list',
     name: 'employeeRole',
@@ -70,57 +72,87 @@ async function ask() {
   let engineers = [];
   let interns = [];
 
-  /*
+  
   // First get MANAGER's information
   try {
     const managerAns = await inquirer.prompt(questions.concat(managerQuestion));
-    managers.push(managerAns)
+    const manager = new Manager(managerAns.name, managerAns.id, managerAns.email, managerAns.officeNumber); // name, id, email, officeNumber
+    managers.push(manager);
   } catch(error) {
     console.error(error);
   }
 
   // Check if user wants to add employee
   try {
-    var loop = await inquirer.prompt(loopQuestions);
+    var loop = await inquirer.prompt(loopQ);
   } catch(error) {
     console.error(error);
   }
-  // Get Engineer info
-  try {
-    const engineerAns = await inquirer.prompt(questions.concat(engineerQuestion));
-    engineers.push(engineerAns)
-  } catch(error) {
-    console.error(error);
+
+  // console.log(loop);
+
+  while(loop.addEmployee) {
+    // Check role user wants to add
+    try {
+      var role = await inquirer.prompt(roleQ);
+    } catch(error) {
+      console.error(error);
+    }
+
+    switch(role.employeeRole) {
+      case 'Engineer':
+        // Get Engineer info
+        try {
+          const engineerAns = await inquirer.prompt(questions.concat(engineerQuestion));
+          const engineer = new Engineer(engineerAns.name, engineerAns.id, engineerAns.email, engineerAns.gitHub); // name, id, email, gitHub
+          engineers.push(engineer)
+        } catch(error) {
+          console.error(error);
+        }
+        break;
+      case 'Intern':
+        // Get Intern info
+        try {
+          const internAns = await inquirer.prompt(questions.concat(internQuestion));
+          const intern = new Intern(internAns.name, internAns.id, internAns.email, internAns.school); // name, id, email, school
+          interns.push(intern);
+        } catch(error) {
+          console.error(error);
+        }
+        break;
+    }
+
+    // Check if user wants to add employee
+    try {
+      loop = await inquirer.prompt(loopQ);
+    } catch(error) {
+      console.error(error);
+    }
   }
-  
-  // Check if user wants to add employee
-  try {
-    const loop = await inquirer.prompt(loopQuestions);
-  } catch(error) {
-    console.error(error);
-  }
-  // Get Intern info
-  try {
-    const internAns = await inquirer.prompt(questions.concat(internQuestion));
-    interns.push(internAns)
-  } catch(error) {
-    console.error(error);
-  }
+
+
   
 
   // Log out info
-  console.log('\nManagers: ');
+  console.log('Managers: ');
   console.log(`Name: ${managers[0].name}, ID: ${managers[0].id}, Email: ${managers[0].email}, Office Number: ${managers[0].officeNumber}`);
 
-  console.log('\nEngineers: ');
-  console.log(`Name: ${engineers[0].name}, ID: ${engineers[0].id}, Email: ${engineers[0].email}, Github: ${engineers[0].gitHub}`);
+  if (engineers.length) {
+    console.log('Engineers: ');
+    for (let eng of engineers) {
+      console.log(`Name: ${eng.name}, ID: ${eng.id}, Email: ${eng.email}, Github: ${eng.gitHub}`);
+    }
+  }
 
-  console.log('\nInterns: ');
-  console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, School: ${interns[0].school}`);
-
-  */
+  if (interns.length) {
+    console.log('Interns: ');
+    for (let intern of interns) {
+      console.log(`Name: ${intern.name}, ID: ${intern.id}, Email: ${intern.email}, School: ${intern.school}`);
+    }
+  }
+  
   // Create HTML page of team when application exits
-  const createHtml = new CreateHtml([], [], []);
+  const createHtml = new CreateHtml(managers, engineers, interns);
   createHtml.createPage();
 }
 
