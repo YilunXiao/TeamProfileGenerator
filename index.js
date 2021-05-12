@@ -4,6 +4,7 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const CreateHtml = require('./lib/CreateHtml');
 
 
 // VARIABLES
@@ -55,7 +56,7 @@ const loopQuestions = [
     message: 'Do you want to add another employee?',
   },
   {
-    type: 'checkbox',
+    type: 'list',
     name: 'employeeRole',
     message: 'Which role is this employee part of?',
     choices: ['Engineer', 'Intern'],
@@ -63,30 +64,13 @@ const loopQuestions = [
 ]
 
 
-
-/*
-// Inquire prompt
-inquirer
-  .prompt(questions)
-  .then(answers => {
-    // Use user feedback for... whatever!!
-  })
-  .catch(error => {
-    if(error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
-
-*/
-
 async function ask() {
   // Question answers
   let managers = [];
   let engineers = [];
   let interns = [];
 
+  /*
   // First get MANAGER's information
   try {
     const managerAns = await inquirer.prompt(questions.concat(managerQuestion));
@@ -134,7 +118,10 @@ async function ask() {
   console.log('\nInterns: ');
   console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, School: ${interns[0].school}`);
 
+  */
   // Create HTML page of team when application exits
+  const createHtml = new CreateHtml([], [], []);
+  createHtml.createPage();
 }
 
 ask();
