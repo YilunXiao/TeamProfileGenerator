@@ -101,39 +101,38 @@ async function ask() {
   } catch(error) {
     console.error(error);
   }
-  // // Get Engineer info
-  // try {
-  //   const engineerAns = await inquirer.prompt(questions.concat(engineerQuestion));
-  //   engineers.push(engineerAns)
-  // } catch(error) {
-  //   console.error(error);
-  // }
+  // Get Engineer info
+  try {
+    const engineerAns = await inquirer.prompt(questions.concat(engineerQuestion));
+    engineers.push(engineerAns)
+  } catch(error) {
+    console.error(error);
+  }
   
-  // // Check if user wants to add employee
-  // try {
-  //   const loop = await inquirer.prompt(loopQuestions);
-  // } catch(error) {
-  //   console.error(error);
-  // }
-  // // Get Intern info
-  // try {
-  //   const internAns = await inquirer.prompt(questions.concat(internQuestion));
-  //   interns.push(internAns)
-  // } catch(error) {
-  //   console.error(error);
-  // }
+  // Check if user wants to add employee
+  try {
+    const loop = await inquirer.prompt(loopQuestions);
+  } catch(error) {
+    console.error(error);
+  }
+  // Get Intern info
+  try {
+    const internAns = await inquirer.prompt(questions.concat(internQuestion));
+    interns.push(internAns)
+  } catch(error) {
+    console.error(error);
+  }
   
 
   // Log out info
-  console.log('Managers: ');
+  console.log('\nManagers: ');
   console.log(`Name: ${managers[0].name}, ID: ${managers[0].id}, Email: ${managers[0].email}, Office Number: ${managers[0].officeNumber}`);
-  console.log(loop);
 
-  // console.log('Engineers: ');
-  // console.log(`Name: ${engineers[0].name}, ID: ${engineers[0].id}, Email: ${engineers[0].email}, Office Number: ${engineers[0].officeNumber}`);
+  console.log('\nEngineers: ');
+  console.log(`Name: ${engineers[0].name}, ID: ${engineers[0].id}, Email: ${engineers[0].email}, Office Number: ${engineers[0].officeNumber}`);
 
-  // console.log('Interns: ');
-  // console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, Office Number: ${interns[0].officeNumber}`);
+  console.log('\nInterns: ');
+  console.log(`Name: ${interns[0].name}, ID: ${interns[0].id}, Email: ${interns[0].email}, Office Number: ${interns[0].officeNumber}`);
 
   // Create HTML page of team when application exits
 }
